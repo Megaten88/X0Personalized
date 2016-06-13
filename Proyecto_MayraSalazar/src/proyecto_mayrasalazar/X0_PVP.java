@@ -148,11 +148,14 @@ public class X0_PVP {
         if (winX == true) {
             System.out.println("El jugador X ataca");
             vida0 -= 10;
+            juegoNuevo();
         } else if (win0== true) {
             System.out.println("El jugador 0 ataca");
             vidaX -= 10;
+            juegoNuevo();
         } else if (empate == true) {
             System.out.println("Ningun jugador ataca");
+            juegoNuevo();
         }
     }
 
