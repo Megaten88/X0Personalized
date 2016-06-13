@@ -34,7 +34,13 @@ public class X0_PVP {
     }
 
     public void juegoNuevo() {
-        new X0_PVP();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                matriz[i][j] = ".";
+            }
+        }
+        winX = false;
+        win0 = false;
     }
 
     public boolean eleccion() {
