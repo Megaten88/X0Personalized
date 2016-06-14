@@ -5,6 +5,8 @@
  */
 package proyecto_mayrasalazar;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Agile_pc
@@ -18,7 +20,7 @@ public class X0_GUI extends javax.swing.JFrame {
     int count0 = 0;
     String[][] matriz;
     static int vidaX = 100;
-   static int vida0 = 100;
+    static int vida0 = 100;
     boolean playerChoice;
 
     public X0_GUI() {
@@ -419,24 +421,23 @@ public class X0_GUI extends javax.swing.JFrame {
         }
         verificarAttack();
         System.out.printf("La vida actual es:\n X = %d \t 0 = %d\n", vidaX, vida0);
-        if (gameEnd() == false) {
-            
-        }
+        gameEnd();
+
     }
 
     public void verificarAttack() {
         if (winX == true) {
-            System.out.println("El jugador X ataca");
+            JOptionPane.showMessageDialog(rootPane, "El jugador X ataca");
             vida0 -= 50;
             jProgressBar2.setValue(vida0);
             juegoNuevo();
         } else if (win0 == true) {
-            System.out.println("El jugador 0 ataca");
+            JOptionPane.showMessageDialog(rootPane, "El jugador 0 ataca");
             vidaX -= 50;
             juegoNuevo();
             jProgressBar1.setValue(vidaX);
         } else if (empate == true) {
-            System.out.println("Ningun jugador ataca");
+            JOptionPane.showMessageDialog(rootPane, "Ningún jugador ataca");
             juegoNuevo();
             empate = false;
         }
@@ -454,12 +455,22 @@ public class X0_GUI extends javax.swing.JFrame {
         return vacios;
     }
 
-    public boolean gameEnd() {
+    public void gameEnd() {
         boolean gameEnd = true;
         if (vidaX == 0 || vida0 == 0) {
             gameEnd = false;
         }
-        return gameEnd;
+        if (gameEnd == false && vidaX > 0) {
+            JOptionPane.showMessageDialog(rootPane, "El ganador es el Jugador X");
+            juegoNuevo();
+            jProgressBar1.setValue(100);
+            jProgressBar2.setValue(100);
+        } else if (gameEnd == false && vida0 > 0) {
+            JOptionPane.showMessageDialog(rootPane, "El ganador es el Jugador 0");
+            juegoNuevo();
+            jProgressBar1.setValue(100);
+            jProgressBar2.setValue(100);
+        }
     }
 
     public void leerMatriz() {
