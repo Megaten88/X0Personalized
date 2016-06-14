@@ -38,7 +38,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         difference = 0;
         score = 0;
         food = false;
-        runl = false;// run left
+        runl = true;// run left
         runr = true;// run right
         runu = true;//run up
         rund = true;//run down
