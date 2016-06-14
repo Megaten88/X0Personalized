@@ -15,17 +15,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        X0_PVP playPvP = new X0_PVP(); 
+        X0_GUI playPvP = new X0_GUI(); 
         Scanner read = new Scanner(System.in);
         int x;
         int y;
         do{
-            playPvP.leerMatriz();
-            System.out.println("Ingrese movimiento filas:");
-            x = read.nextInt();
-            System.out.println("Ingrese movimiento columnas:");
-            y = read.nextInt();
-            playPvP.mover(x, y);
+           new X0_GUI();
         }while(playPvP.gameEnd());
     }
 }
