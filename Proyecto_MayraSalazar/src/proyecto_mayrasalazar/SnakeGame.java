@@ -73,7 +73,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         p1.setLayout(null);
         p2.setLayout(new GridLayout(0, 1));
         p1.setBounds(0, 0, x, y); //estos son los limites del cuadrito donde viaja el gusanito
-        p1.setBackground(Color.black);
+        p1.setBackground(Color.GREEN);
         p2.setBounds(0, y, x, 30); // este cubre menos espacio,p2 es el espacio del score
         p2.setBackground(Color.BLACK);
 
