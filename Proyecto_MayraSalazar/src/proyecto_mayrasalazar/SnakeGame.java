@@ -256,12 +256,19 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         if (food == false) {
             growup();
             food = true;
+            if(score == 200){
+                t.setText("YOU WIN!!!	" + score);
+                try {
+                    myt.join();
+                } catch (InterruptedException ie) {
+                }
+            }
         } else {
             lb[gu - 1].setBounds(lbx[gu - 1], lby[gu - 1], 10, 10);
         }
 
         for (int i = 1; i < gu; i++) {
-            if (lbp[0] == lbp[i]) {
+            if (lbp[0].x == 0 || lbp[0].x == 470 || lbp[0].y == 240 || lbp[0].y == 0) {
                 t.setText("GAME OVER	" + score);
                 try {
                     myt.join();
