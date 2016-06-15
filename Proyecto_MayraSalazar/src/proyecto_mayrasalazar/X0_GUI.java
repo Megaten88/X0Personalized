@@ -428,12 +428,12 @@ public class X0_GUI extends javax.swing.JFrame {
     public void verificarAttack() {
         if (winX == true) {
             JOptionPane.showMessageDialog(rootPane, "El jugador X ataca");
-            vida0 -= 50;
+            vida0 -= 20;
             jProgressBar2.setValue(vida0);
             juegoNuevo();
         } else if (win0 == true) {
             JOptionPane.showMessageDialog(rootPane, "El jugador 0 ataca");
-            vidaX -= 50;
+            vidaX -= 20;
             juegoNuevo();
             jProgressBar1.setValue(vidaX);
         } else if (empate == true) {
