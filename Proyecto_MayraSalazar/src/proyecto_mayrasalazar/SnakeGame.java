@@ -1,6 +1,5 @@
 package proyecto_mayrasalazar;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,14 +10,14 @@ import java.util.*;
 // que reconozca imputs del teclado y que reconozca threads
 class SnakeGame extends JFrame implements KeyListener, Runnable {
 
-    JPanel p1, p2; 
+    JPanel p1, p2;
     JButton[] lb = new JButton[200];
     JButton bonusfood; // De vez en cuando salen cuadritos que mas grandes que salen con random, los puntitos son botones
     JTextArea t; // para poner texto
     int x = 500, y = 250, gu = 2, directionx = 1, directiony = 0, speed = 50, difference = 0, oldx, oldy, score = 0;
     int[] lbx = new int[300]; //arrays de las coordenadas x donde aparecera comida
     int[] lby = new int[300]; //arrays de las coordenadas y donde aparecera comida
-    Point[] lbp = new Point[300]; 
+    Point[] lbp = new Point[300];
     Point bfp = new Point();
     Thread myt; // el thread
     boolean food = false, runl = false, runr = true, runu = true, rund = true, bonusflag = true;
@@ -27,7 +26,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
     JMenu game, help; // las opciones que salen en el menu
 
     public void initializeValues() {
-        gu = 5; // esto es importante, este es la cantidad de cuadritos que se mueven del gusanito inicialmente
+        gu = 6; // esto es importante, este es la cantidad de cuadritos que se mueven del gusanito inicialmente
         //en la funcion de createSnake hay un for y el for define el tamaño del gusanito
         // si gu =3 y en el for hay i < 5 el gusanito solo movera 3 cuadritos y dejara 2 atras  
         // asi que gu y la condicion del for deben ser iguales
@@ -47,7 +46,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         //bueno en resumen es para que no vayan a la direccion contraria 
         bonusflag = true;//es para cuando sale comida bonus, se ocupa mas adelante porque la comida 
         //bonus da mas puntos
-        
+
     }
 
     public SnakeGame() {
@@ -73,7 +72,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         p1.setLayout(null);
         p2.setLayout(new GridLayout(0, 1));
         p1.setBounds(0, 0, x, y); //estos son los limites del cuadrito donde viaja el gusanito
-        p1.setBackground(Color.GREEN);
+        p1.setBackground(Color.BLACK);
         p2.setBounds(0, y, x, 30); // este cubre menos espacio,p2 es el espacio del score
         p2.setBackground(Color.BLACK);
 
@@ -103,6 +102,11 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
             lb[i].setEnabled(false);
             p1.add(lb[i]);
             lb[i].setBounds(lbx[i], lby[i], 10, 10);
+            if (i == 0) {
+                lb[i].setBackground(Color.red);
+            }else{
+                lb[i].setBackground(ranColor());
+            }
             lbx[i + 1] = lbx[i] - 10;
             lby[i + 1] = lby[i];
         }
@@ -121,10 +125,10 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         newgame.addActionListener(
                 new ActionListener() {
 
-                    public void actionPerformed(ActionEvent e) {
-                        reset();
-                    }
-                });
+            public void actionPerformed(ActionEvent e) {
+                reset();
+            }
+        });
         //y esta es la estructura para cerrar la ventana por medio de un actionListener.
         exit.addActionListener(new ActionListener() {
 
@@ -153,7 +157,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         //repetimos lo mismo que hicimos con la primera pestaña
         help.add(creator);
         mymbar.add(help);
-        
+
         //al final armamos el menú
         setJMenuBar(mymbar);
     }
@@ -165,7 +169,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         p1.removeAll();
         //esto seria para detener el thread
         myt.stop();
-        
+
         //crear nuevamente un gusanito
         createFirstSnake();
         //yyyy poner otra vez el score en 0
@@ -184,23 +188,24 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         lb[gu].setEnabled(false);
         //y por ultimo se lo ponemos
         p1.add(lb[gu]);
-        
+
         //r es nuestra variable de random
         //a y b seran las coordenadas donde aparecera la comidita nueva despues de ser comida
         int a = 10 + (10 * r.nextInt(48));
         int b = 10 + (10 * r.nextInt(23));
-        
+
         //al añadirlo en el array del lbx y lby ya tenemos ese valor numerico para esa cordenada
         lbx[gu] = a;
         lby[gu] = b;
         lb[gu].setBounds(a, b, 10, 10);
+        lb[gu].setBackground(ranColor());
+        
 
         gu++;
     }
 
     //este metodo es la lógica de movimiento donde donde la direccion la define el imput de direccion
     //recuerde que definimos que el gusanito inicialmente se mueva a la derecha 
-
     void moveForward() {
         for (int i = 0; i < gu; i++) {
             lbp[i] = lb[i].getLocation();
@@ -215,7 +220,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
             lb[i].setLocation(lbp[i - 1]);
         }
         // XD esta es ya logica de movimiento de gusanito que vi en un tutorial
-     
+
         //pero creo que quiere decir como se debe mover el gusanito cuando no se presionan teclas
         //si no se presiona nada se mueve positivamente en x
         //
@@ -243,7 +248,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
                 bonusflag = false;
             }
         }
-        
+
         if (bonusflag == false) {
             if (bfp.x <= lbx[0] && bfp.y <= lby[0] && bfp.x + 10 >= lbx[0] && bfp.y + 10 >= lby[0]) {
                 p1.remove(bonusfood);
@@ -255,8 +260,9 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
 
         if (food == false) {
             growup();
+            gameEnd();
             food = true;
-            if(score == 200){
+            if (score == 200) {
                 t.setText("YOU WIN!!!	" + score);
                 try {
                     myt.join();
@@ -266,7 +272,12 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         } else {
             lb[gu - 1].setBounds(lbx[gu - 1], lby[gu - 1], 10, 10);
         }
+        gameEnd();
+        p1.repaint();
+        show();
+    }
 
+    public void gameEnd() {
         for (int i = 1; i < gu; i++) {
             if (lbp[0].x == 0 || lbp[0].x == 470 || lbp[0].y == 240 || lbp[0].y == 0) {
                 t.setText("GAME OVER	" + score);
@@ -275,12 +286,12 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
                 } catch (InterruptedException ie) {
                 }
                 break;
-            }
+            }   
         }
-
-
-        p1.repaint();
-        show();
+    }
+    public Color ranColor(){
+        Color color = new Color((int)(Math.random() * 255),(int)(Math.random() * 255),(int)(Math.random()*255));
+        return color;
     }
 
     public void keyPressed(KeyEvent e) {
