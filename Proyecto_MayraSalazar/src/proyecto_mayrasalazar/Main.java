@@ -34,6 +34,8 @@ public class Main {
                     char resp = 's';
                     int ob = 0,
                      des = 0;
+                    double accOb = 0;
+                    double accDes = 0;
                     System.out.println("Este es un programa de medida de índice de masa corporal");
                     while (resp == 'S' || resp == 's') {
                         System.out.print("Ingrese nombre de la persona:\n");
@@ -49,18 +51,23 @@ public class Main {
                             if (bmi >= 0 && bmi <= 18.99) {
                                 System.out.printf("La persona %s pesa %.2f y está desnutrida\n", nombre, bmi);
                                 des++;
-                            } else if (bmi >= 19.00 && bmi <= 25.00) {
+                                accDes += bmi;
+                            } else if (bmi >= 19.00 && bmi < 25.00) {
                                 System.out.printf("La persona %s pesa %.2f y está saludable\n", nombre, bmi);
                             } else {
                                 System.out.printf("La persona %s pesa %.2f y tiene sobrepeso\n", nombre, bmi);
                                 ob++;
+                                accOb += bmi;
                             }
                         }
                         System.out.println("Desea ingresar otro paciente?[s/n]");
                         resp = read.next().charAt(0);
                     }
-                    System.out.printf("Hay %d personas desnutridas\n", des);
-                    System.out.printf("Hay %d con sobrepeso\n", ob);
+                    double promOb = promedioBMI(accOb, ob);
+                    double promDes = promedioBMI(accDes, des);
+                    System.out.printf("Hay %d personas desnutridas y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", des,promDes);
+                    System.out.printf("Hay %d con sobrepeso y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", ob, promOb);
+                    
                     break;
                 case 3:
                     new SnakeGame();
@@ -80,5 +87,8 @@ public class Main {
 
     public static float indiceMasaCorporal(float peso, float metros) {
         return peso / (float) (Math.pow(metros, (int) 2));
+    }
+    public static double promedioBMI(double accumulador, int numPersonas){
+        return accumulador/numPersonas;
     }
 }

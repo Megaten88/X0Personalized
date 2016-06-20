@@ -52,7 +52,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         super("Snake");
         setSize(500, 330); //este es el size de la ventana
         //llamamos la funcion createbar que tiene las instancias para crear el menu del Form
-        creatbar();
+        createBar();
         //initializar variables
         initializeValues();
         // las 2 partes del UI
@@ -111,7 +111,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         }
     }
 
-    public void creatbar() {
+    public void createBar(){
         //Esta es la función que se llama al principio que contiene las instancias que crean el menu
         mymbar = new JMenuBar(); // Se instancia la barra de menú.
 
