@@ -69,9 +69,9 @@ public class Main {
                     // resultados finales
                     double promOb = promedioBMI(accOb, ob);
                     double promDes = promedioBMI(accDes, des);
-                    System.out.printf("Hay %d personas desnutridas y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", des,promDes);
+                    System.out.printf("Hay %d personas desnutridas y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", des, promDes);
                     System.out.printf("Hay %d con sobrepeso y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", ob, promOb);
-                    
+
                     break;
                 case 3:
                     new SnakeGame();
@@ -80,7 +80,7 @@ public class Main {
                 case 4:
                     String[] arg = {};
                     X0.main(arg);
-                    // Llamada al main del X0. El X0 es ejecutable por si mismo.
+                    // Llamada al main del X0. El X0 es ejecutable por si mismo
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, "Salió del programa");
@@ -89,12 +89,19 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Ingresó una opción inválida");
             }
         } while (opcion > 0 && opcion < 5);
+
     } // fin del main
 // métodos estáticos que se llaman al main 
+
     public static float indiceMasaCorporal(float peso, float metros) {
         return peso / (float) (Math.pow(metros, (int) 2));
     } // devuelve un float del índice de masa corporal
-    public static double promedioBMI(double accumulador, int numPersonas){
-        return accumulador/numPersonas;
+
+    public static double promedioBMI(double accumulador, int numPersonas) {
+        if (numPersonas == 0) {
+            return 0;
+        } else {
+            return accumulador / numPersonas;
+        }
     } // devuelve un double del promedio que se obtiene de accumular el bmi de las personas, entre el número de personas
 } // fin de la clase
