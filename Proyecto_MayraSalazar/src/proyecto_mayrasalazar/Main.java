@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class Main {
 
-    static Metodos metodo = new Metodos();
-    static X0_GUI X0 = new X0_GUI();
+    static Metodos metodo = new Metodos(); // variable de referencia para la clase Metodos()
+    static X0_GUI X0 = new X0_GUI(); // variable de referencia para la clase X0_GUI()
 
     public static void main(String[] args) throws InterruptedException {
         Scanner read = new Scanner(System.in);
@@ -25,11 +25,13 @@ public class Main {
             opcion = Integer.parseInt(opcionUser);
             switch (opcion) {
                 case 1:
+                    //Juego de adivinar letras 
                     String letraUser = JOptionPane.showInputDialog(null, "Adivina una letra de las que tengo:");
                     char eleccion = Character.toLowerCase(letraUser.charAt(0));
                     metodo.encontrarChar(eleccion);
                     break;
                 case 2:
+                    // BMI programa en consola
                     JOptionPane.showMessageDialog(null, "Advertencia:\n Este programa se hará en consola.");
                     char resp = 's';
                     int ob = 0,
@@ -38,6 +40,7 @@ public class Main {
                     double accDes = 0;
                     System.out.println("Este es un programa de medida de índice de masa corporal");
                     while (resp == 'S' || resp == 's') {
+                        // el while controlado por respuesta de usuario
                         System.out.print("Ingrese nombre de la persona:\n");
                         String nombre = read.next();
                         System.out.println("Ingrese su peso en kilogramos: ");
@@ -63,6 +66,7 @@ public class Main {
                         System.out.println("Desea ingresar otro paciente?[s/n]");
                         resp = read.next().charAt(0);
                     }
+                    // resultados finales
                     double promOb = promedioBMI(accOb, ob);
                     double promDes = promedioBMI(accDes, des);
                     System.out.printf("Hay %d personas desnutridas y el índice de masa corporal promedio de las personas desnutridas es %.2f\n", des,promDes);
@@ -71,10 +75,12 @@ public class Main {
                     break;
                 case 3:
                     new SnakeGame();
+                    // Llamada al constructor de la clase SnakeGame()
                     break;
                 case 4:
                     String[] arg = {};
                     X0.main(arg);
+                    // Llamada al main del X0. El X0 es ejecutable por si mismo.
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, "Salió del programa");
@@ -84,11 +90,11 @@ public class Main {
             }
         } while (opcion > 0 && opcion < 5);
     }
-
+// métodos estáticos que se llaman al main 
     public static float indiceMasaCorporal(float peso, float metros) {
         return peso / (float) (Math.pow(metros, (int) 2));
-    }
+    } // devuelve un float del índice de masa corporal
     public static double promedioBMI(double accumulador, int numPersonas){
         return accumulador/numPersonas;
-    }
-}
+    } // devuelve un double del promedio que se obtiene de accumular el bmi de las personas, entre el número de personas
+} // fin de la clase

@@ -24,7 +24,7 @@ public class Metodos {
             arrayChar[i] = arrayCharLetras[x];
         }
         return arrayChar;
-    }
+    }// crea un arreglo random de caracteres
 
     public void encontrarChar(char carac) {
         char[] arrayChar = charRandom();
@@ -38,7 +38,7 @@ public class Metodos {
             }
         }
         JOptionPane.showMessageDialog(null, "Las letras que tenía eran: \n" + leerArray(arrayChar,0));
-    }
+    }// cada vez que se hace un llamado a este método trae un arreglo distinto de letras
 
     public String leerArray(char[] array, int inicioArray) {
         String leerArr = "";
@@ -50,6 +50,6 @@ public class Metodos {
             leerArr += array[inicioArray] + " ";
             return leerArr + leerArray(array, inicioArray + 1);
         }
-    }
+    }// Método recursivo que regresa en un string la lectura de un array
     
-}
+}// fin de la clase Metodos()

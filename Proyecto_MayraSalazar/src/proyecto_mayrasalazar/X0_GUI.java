@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Agile_pc
  */
 public class X0_GUI extends javax.swing.JFrame {
-
+// la clase se crea directo como un JFrameForm
     boolean empate;
     boolean winX;
     boolean win0;
@@ -24,6 +24,7 @@ public class X0_GUI extends javax.swing.JFrame {
     boolean playerChoice;
 
     public X0_GUI() {
+        //constructor que inicializa los componentes y la matriz
         initComponents();
         playerChoice = true;
         matriz = new String[3][3];
@@ -44,6 +45,7 @@ public class X0_GUI extends javax.swing.JFrame {
         }
         winX = false;
         win0 = false;
+        //llena la matriz con espacios en blanco y inicializa los booleanos winX y win0
     }
 
     public void llamarBotones() {
@@ -56,7 +58,7 @@ public class X0_GUI extends javax.swing.JFrame {
         jButton7.setText(matriz[1][1]);
         jButton8.setText(matriz[2][2]);
         jButton9.setText(matriz[2][1]);
-
+        // este método cambia el texto de los botones cada vez que se llamen
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -219,7 +221,7 @@ public class X0_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        mover(0, 1);
+        mover(0, 1); // corresponde al método de mover
         llamarBotones();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -297,6 +299,7 @@ public class X0_GUI extends javax.swing.JFrame {
                 new X0_GUI().setVisible(true);
             }
         });
+        // el JFrame Form trae consigo mismo un main ejecutable, por eso esta clase puede ejecutarse independientemente
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -318,6 +321,7 @@ public class X0_GUI extends javax.swing.JFrame {
     public boolean eleccion() {
         playerChoice = !playerChoice;
         return playerChoice;
+        // cada vez que se llame cambiara el valor del boolean
     }
 
     public void mover(int x, int y) {
@@ -329,6 +333,7 @@ public class X0_GUI extends javax.swing.JFrame {
         eleccion();
         ganar();
         leerMatriz();
+        // segun el boolean, la matriz se sobre escribe con "X" o "0"
     }
 
     public void ganar() {
@@ -444,6 +449,7 @@ public class X0_GUI extends javax.swing.JFrame {
     }
 
     public int mover() {
+        // método sobrecargado que verifica si se puede seguir moviendo en la matriz
         int vacios = 0;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
@@ -456,6 +462,7 @@ public class X0_GUI extends javax.swing.JFrame {
     }
 
     public void gameEnd() {
+        //verifica quien gana
         boolean gameEnd = true;
         if (vidaX == 0 || vida0 == 0) {
             gameEnd = false;
@@ -482,4 +489,4 @@ public class X0_GUI extends javax.swing.JFrame {
         }
     }
 
-}
+} // fin de la clase X0_GUI()
