@@ -51,13 +51,5 @@ public class Metodos {
             return leerArr + leerArray(array, inicioArray + 1);
         }
     }
-    public int[][] crearMatriz(int[][] matriz){
-        int[][] matrizDiagOrdenada = matriz;
-        return matriz;
-    }
-    public void crearMatriz(int x, int y){
-        int[][] matriz = new int[x][y];
-        
-    }
     
 }
