@@ -416,7 +416,7 @@ public class X0_GUI extends javax.swing.JFrame {
             count0 += 1;
 
         }
-        if (vacios() == 0 && winX == false && win0 == false) {
+        if (mover() == 0 && winX == false && win0 == false) {
             empate = true;
         }
         verificarAttack();
@@ -443,7 +443,7 @@ public class X0_GUI extends javax.swing.JFrame {
         }
     }
 
-    public int vacios() {
+    public int mover() {
         int vacios = 0;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {

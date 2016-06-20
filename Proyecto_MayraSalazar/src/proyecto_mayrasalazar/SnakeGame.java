@@ -14,7 +14,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
     JButton[] lb = new JButton[200];
     JButton bonusfood; // De vez en cuando salen cuadritos que mas grandes que salen con random, los puntitos son botones
     JTextArea t; // para poner texto
-    int x = 500, y = 250, gu = 2, directionx = 1, directiony = 0, speed = 50, difference = 0, oldx, oldy, score = 0;
+    int x = 500, y = 250, gu = 2, directionx = 1, directiony = 0, speed = 60,score = 0;
     int[] lbx = new int[300]; //arrays de las coordenadas x donde aparecera comida
     int[] lby = new int[300]; //arrays de las coordenadas y donde aparecera comida
     Point[] lbp = new Point[300];
@@ -34,7 +34,6 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         lby[0] = 150;
         directionx = 10; //direccion en la que va el gusanito, cambiela a negativo y va a la izquierda
         directiony = 0; //como es su movimiento inicial y debe ser 0 porque no se mueve horizontal
-        difference = 0;
         score = 0;
         food = false;
         runl = true;// run left

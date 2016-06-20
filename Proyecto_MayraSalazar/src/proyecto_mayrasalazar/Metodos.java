@@ -6,6 +6,7 @@
 package proyecto_mayrasalazar;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,20 +30,25 @@ public class Metodos {
         char[] arrayChar = charRandom();
         for (int i = 0; i < arrayChar.length; i++) {
             if (Character.toLowerCase(carac) == arrayChar[i]) {
-                System.out.println("Correcto, has adivindado una de mis letras");
+                JOptionPane.showMessageDialog(null, "Correcto, has adivindado una de mis letras");
                 break;
             } else {
-                System.out.println("Awww que lástima, no has adivinado ninguna letra");
+                JOptionPane.showMessageDialog(null, "Awww que lástima, no has adivinado ninguna letra");
                 break;
             }
         }
-        System.out.println("Las letras que tenía eran:");
-        leerArray(arrayChar);
+        JOptionPane.showMessageDialog(null, "Las letras que tenía eran: \n" + leerArray(arrayChar,0));
     }
 
-    public void leerArray(char[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("[" + array[i] + "]");
+    public String leerArray(char[] array, int inicioArray) {
+        String leerArr = "";
+        if (inicioArray == array.length - 1) {
+            leerArr += array[inicioArray] + " ";
+            return leerArr;
+        }
+        else{
+            leerArr += array[inicioArray] + " ";
+            return leerArr + leerArray(array, inicioArray + 1);
         }
     }
     public int[][] crearMatriz(int[][] matriz){
