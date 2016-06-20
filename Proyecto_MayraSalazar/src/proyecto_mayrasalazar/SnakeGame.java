@@ -294,34 +294,34 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
     }
 
     public void keyPressed(KeyEvent e) {
-        // snake move to left when player pressed left arrow
+        //Significa que el snake se mueve a la derecha cuando el jugador presiona a la derecha
         if (runl == true && e.getKeyCode() == 37) {
-            directionx = -10; // means snake move right to left by 10pixels
+            directionx = -10; //el snake se mueve de derecha a izquierda por 10 pixeles 
             directiony = 0;
-            runr = false;     // run right(runr) means snake cant move from left to right
-            runu = true;      // run up   (runu) means snake can move from down to up
-            rund = true;      // run down (run down) means snake can move from up to down
+            runr = false;     // run right(runr) es para que el snake no pueda moverso de izquierda a  derecha
+            runu = true;      // run up   (runu) es para que el snake pueda subir y bajar
+            rund = true;      
         }
-        // snake move to up when player pressed up arrow
+        // el snake se mueve arriba cuando el jugador presiona la tecla hacia arriba
         if (runu == true && e.getKeyCode() == 38) {
             directionx = 0;
-            directiony = -10; // means snake move from down to up by 10 pixel
-            rund = false;     // run down (run down) means snake can move from up to down
-            runr = true;      // run right(runr) means snake can move from left to right
-            runl = true;      // run left (runl) means snake can move from right to left
+            directiony = -10; // el snake puede moverse de arriba a abajo por 10 pixeles
+            rund = false;     // run down (run down) es para que el snake no se pueda mover hacia abajo
+            runr = true;      // run right(runr) es para que el snake se pueda mover de izquierda a derecha
+            runl = true;      // run left (runl) es para que el snake se pueda mover de derecha a izquierda 
         }
-        // snake move to right when player pressed right arrow
+        // El snake se mueve hacia la derecha cuando el jugador presiona la tecla de la derecha
         if (runr == true && e.getKeyCode() == 39) {
-            directionx = +10; // means snake move from left to right by 10 pixel
+            directionx = +10; //El snake se mueve de izquiera a derecha por 10 pixeles
             directiony = 0;
             runl = false;
             runu = true;
             rund = true;
         }
-        // snake move to down when player pressed down arrow
+        // El snake se mueve hacia abajo cuando el jugador presiona la tecla hacia abajo
         if (rund == true && e.getKeyCode() == 40) {
             directionx = 0;
-            directiony = +10; // means snake move from left to right by 10 pixel
+            directiony = +10; // El snake se mueve de arriba hacia abajo
             runu = false;
             runr = true;
             runl = true;
