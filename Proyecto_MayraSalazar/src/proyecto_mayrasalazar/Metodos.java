@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Agile
+ * @author Mayra Salazar
  */
 public class Metodos {
 

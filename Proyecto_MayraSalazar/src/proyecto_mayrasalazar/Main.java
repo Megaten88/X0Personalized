@@ -89,7 +89,7 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Ingresó una opción inválida");
             }
         } while (opcion > 0 && opcion < 5);
-    }
+    } // fin del main
 // métodos estáticos que se llaman al main 
     public static float indiceMasaCorporal(float peso, float metros) {
         return peso / (float) (Math.pow(metros, (int) 2));

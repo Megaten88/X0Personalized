@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Agile_pc
+ * @author Mayra Salazar
  */
 public class X0_GUI extends javax.swing.JFrame {
 // la clase se crea directo como un JFrameForm
