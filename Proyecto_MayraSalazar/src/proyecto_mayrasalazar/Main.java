@@ -16,6 +16,7 @@ public class Main {
 
     static Metodos metodo = new Metodos();
     static X0_GUI X0 = new X0_GUI();
+
     public static void main(String[] args) throws InterruptedException {
         Scanner read = new Scanner(System.in);
         int opcion;
@@ -31,9 +32,10 @@ public class Main {
                 case 2:
                     JOptionPane.showMessageDialog(null, "Advertencia:\n Este programa se hará en consola.");
                     char resp = 's';
-                    int ob = 0, des = 0;
+                    int ob = 0,
+                     des = 0;
+                    System.out.println("Este es un programa de medida de índice de masa corporal");
                     while (resp == 'S' || resp == 's') {
-                        System.out.println("Este es un programa de medida de índice de masa corporal");
                         System.out.print("Ingrese nombre de la persona:\n");
                         String nombre = read.next();
                         System.out.println("Ingrese su peso en kilogramos: ");
@@ -45,22 +47,20 @@ public class Main {
                         } else {
                             float bmi = indiceMasaCorporal(peso, metros);
                             if (bmi >= 0 && bmi <= 18.99) {
-                                System.out.printf("La persona %s pesa %.2f y está desnutrida\n", nombre, bmi );
+                                System.out.printf("La persona %s pesa %.2f y está desnutrida\n", nombre, bmi);
                                 des++;
-                            }
-                            else if (bmi >= 19.00 && bmi<=25.00 ) {
-                                System.out.printf("La persona %s pesa %.2f y está saludable\n", nombre, bmi );
-                            }
-                            else{
-                                System.out.printf("La persona %s pesa %.2f y tiene sobrepeso\n", nombre, bmi );
+                            } else if (bmi >= 19.00 && bmi <= 25.00) {
+                                System.out.printf("La persona %s pesa %.2f y está saludable\n", nombre, bmi);
+                            } else {
+                                System.out.printf("La persona %s pesa %.2f y tiene sobrepeso\n", nombre, bmi);
                                 ob++;
                             }
                         }
                         System.out.println("Desea ingresar otro paciente?[s/n]");
                         resp = read.next().charAt(0);
-                        System.out.printf("Hay %d personas desnutridas\n",des);
-                        System.out.printf("Hay %d con sobrepeso\n", ob);
                     }
+                    System.out.printf("Hay %d personas desnutridas\n", des);
+                    System.out.printf("Hay %d con sobrepeso\n", ob);
                     break;
                 case 3:
                     new SnakeGame();
@@ -76,10 +76,9 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Ingresó una opción inválida");
             }
         } while (opcion > 0 && opcion < 5);
-
     }
 
     public static float indiceMasaCorporal(float peso, float metros) {
-        return  peso/ (float)(Math.pow(metros, (int) 2));
+        return peso / (float) (Math.pow(metros, (int) 2));
     }
 }
