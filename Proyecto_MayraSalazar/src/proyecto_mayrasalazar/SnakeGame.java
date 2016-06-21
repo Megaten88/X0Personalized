@@ -236,7 +236,7 @@ class SnakeGame extends JFrame implements KeyListener, Runnable {
         //con comida que esta en la coordenada lbx y lby
         // de ser asi le suma 5 puntos al score yyyyy el gusanito debe crecer
         //para que crezca food debe ser falso y mas adelante se llama la funcion growup
-        if (lbx[0] == lbx[gu - 1] && lby[0] == lby[gu - 1]) {
+        if (lbx[0] == lbx[gu-1] && lby[0] == lby[gu - 1]) {
             food = false;
             score += 5;
             t.setText("Score==>" + score);
