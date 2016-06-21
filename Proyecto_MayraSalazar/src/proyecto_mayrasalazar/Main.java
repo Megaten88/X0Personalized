@@ -89,7 +89,6 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Ingresó una opción inválida");
             }
         } while (opcion > 0 && opcion < 5);
-        System.exit(0);
     } // fin del main
 // métodos estáticos que se llaman al main 
 

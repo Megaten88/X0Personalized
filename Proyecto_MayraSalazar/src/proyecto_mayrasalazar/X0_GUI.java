@@ -5,6 +5,7 @@
  */
 package proyecto_mayrasalazar;
 
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 /**
@@ -297,6 +298,7 @@ public class X0_GUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new X0_GUI().setVisible(true);
+                new X0_GUI().setState(Frame.NORMAL);
             }
         });
         // el JFrame Form trae consigo mismo un main ejecutable, por eso esta clase puede ejecutarse independientemente
